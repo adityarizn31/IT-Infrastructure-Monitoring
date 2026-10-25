@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Ops Monitor</string>
+    <string name="opsmonitor">OpsMonitor</string>
+    <string name="it_infrastructure_dashboard">IT Infrastructure Dashboard</string>
+    <string name="server_summary">Server Summary</string>
+    <string name="online">Online</string>
+    <string name="_0">0</string>
+    <string name="warning">Warning</string>
+    <string name="offline">Offline</string>
+    <string name="infrastructure_overview">Infrastructure Overview</string>
+    <string name="total_monitored_servers">Total monitored servers</string>
+    <string name="recent_activity">Recent Activity</string>
+    <string name="all_systems_monitoring_initialized">All systems monitoring initialized</string>
+    <string name="server_overview">Server Overview</string>
+</resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_marginBottom="12dp"
+    android:background="#172033">
+
+        <TextView
+            android:id="@+id/tvServerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="APP-SERVER-01"
+            android:textColor="#F1F5F9"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvServerIp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="192.168.1.10"
+            android:textColor="#94A3B8"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvServerStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Online"
+            android:textColor="#34D399"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvServerCpu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="CPU Usage: 35%"
+            android:textColor="#60A5FA"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvServerRam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="RAM Usage: 48%"
+            android:textColor="#34D399"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvServerDisk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Disk Usage: 62%"
+            android:textColor="#FBBF24"
+            android:textSize="13sp" />
+
+    </LinearLayout>
