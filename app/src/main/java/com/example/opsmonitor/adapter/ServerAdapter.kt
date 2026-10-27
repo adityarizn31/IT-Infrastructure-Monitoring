@@ -8,16 +8,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.opsmonitor.R
 import com.example.opsmonitor.model.Server
 
-class ServerAdapter (private val servers: List<Server>) : RecyclerView.Adapter<ServerAdapter.ServerViewHolder>() {
+class ServerAdapter(
+    private val servers: List<Server>,
+    private val onItemClick: ((Server) -> Unit)? = null
+) : RecyclerView.Adapter<ServerAdapter.ServerViewHolder>() {
 
-    class ServerViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-
-        val name : TextView = itemView.findViewById(R.id.tvServerName)
-        val ipAddress : TextView = itemView.findViewById(R.id.tvServerIp)
-        val status : TextView = itemView.findViewById(R.id.tvServerStatus)
-        val cpu : TextView = itemView.findViewById(R.id.tvServerCpu)
-        val ram : TextView = itemView.findViewById(R.id.tvServerRam)
-        val disk : TextView = itemView.findViewById(R.id.tvServerDisk)
+    class ServerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val name: TextView = itemView.findViewById(R.id.tvServerName)
+        val ipAddress: TextView = itemView.findViewById(R.id.tvServerIp)
+        val status: TextView = itemView.findViewById(R.id.tvServerStatus)
+        val cpu: TextView = itemView.findViewById(R.id.tvServerCpu)
+        val ram: TextView = itemView.findViewById(R.id.tvServerRam)
+        val disk: TextView = itemView.findViewById(R.id.tvServerDisk)
     }
 
     override fun onCreateViewHolder(
@@ -25,7 +27,6 @@ class ServerAdapter (private val servers: List<Server>) : RecyclerView.Adapter<S
         viewType: Int
     ): ServerAdapter.ServerViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_server, parent, false)
-
         return ServerViewHolder(view)
     }
 
@@ -45,7 +46,11 @@ class ServerAdapter (private val servers: List<Server>) : RecyclerView.Adapter<S
             else -> android.graphics.Color.rgb(248, 113, 113)
         }
         holder.status.setTextColor(statusColor)
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(server)
+        }
     }
 
-    override fun getItemCount() : Int = servers.size
+    override fun getItemCount(): Int = servers.size
 }
