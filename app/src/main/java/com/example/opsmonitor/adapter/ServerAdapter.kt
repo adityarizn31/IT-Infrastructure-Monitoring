@@ -9,7 +9,7 @@ import com.example.opsmonitor.R
 import com.example.opsmonitor.model.Server
 
 class ServerAdapter(
-    private val servers: List<Server>,
+    private var servers: List<Server>,
     private val onItemClick: ((Server) -> Unit)? = null
 ) : RecyclerView.Adapter<ServerAdapter.ServerViewHolder>() {
 
@@ -53,4 +53,9 @@ class ServerAdapter(
     }
 
     override fun getItemCount(): Int = servers.size
+
+    fun updateData(newServers: List<Server>) {
+        servers = newServers
+        notifyDataSetChanged()
+    }
 }

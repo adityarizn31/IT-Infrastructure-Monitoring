@@ -49,4 +49,5 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.navigation:navigation-fragment-ktx:2.10.2")
     implementation("androidx.navigation:navigation-ui:2.10.2")
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 }
