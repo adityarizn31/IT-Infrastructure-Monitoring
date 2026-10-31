@@ -1,119 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0B1120"
-    android:padding="20dp"
-    android:orientation="vertical"
     tools:context=".ui.ServerDetailFragment">
 
-    <!-- Judul / Nama Server Terpilih -->
-    <TextView
-        android:id="@+id/tvDetailServerName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="srv-prod-db-01"
-        android:textColor="#F1F5F9"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/tvDetailIpAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="IP: 192.168.1.10"
-        android:textColor="#94A3B8"
-        android:textSize="14sp" />
-
-    <!-- Card Status & Resource -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="#172033"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="20dp">
 
+        <!-- Judul / Nama Server Terpilih -->
         <TextView
+            android:id="@+id/tvDetailServerName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Live Performance"
+            android:text="srv-prod-db-01"
             android:textColor="#F1F5F9"
-            android:textSize="16sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvDetailStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Status: ONLINE"
-            android:textColor="#34D399"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvDetailCpu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="CPU Usage: 45%"
-            android:textColor="#60A5FA"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/tvDetailRam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="RAM Usage: 48%"
-            android:textColor="#34D399"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/tvDetailDisk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Disk Usage: 62%"
-            android:textColor="#FBBF24"
-            android:textSize="14sp" />
-    </LinearLayout>
-
-    <!-- Informasi Lokasi Fisik Data Center (Khas DCO) -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="#172033"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Data Center Location"
-            android:textColor="#F1F5F9"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Location: DC Cibitung - Room 2"
-            android:textColor="#94A3B8"
-            android:textSize="14sp" />
-
-        <TextView
+            android:id="@+id/tvDetailIpAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Rack Position: Rack B12 (U-Space 14-15)"
+            android:text="IP: 192.168.1.10"
             android:textColor="#94A3B8"
             android:textSize="14sp" />
+
+        <!-- Card Status & Resource -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="#172033"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Live Performance"
+                android:textColor="#F1F5F9"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDetailStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Status: ONLINE"
+                android:textColor="#34D399"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDetailCpu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="CPU Usage: 45%"
+                android:textColor="#60A5FA"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvDetailRam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="RAM Usage: 48%"
+                android:textColor="#34D399"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvDetailDisk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Disk Usage: 62%"
+                android:textColor="#FBBF24"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Informasi Lokasi Fisik Data Center (Khas DCO) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#172033"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data Center Location"
+                android:textColor="#F1F5F9"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Location: DC Cibitung - Room 2"
+                android:textColor="#94A3B8"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Rack Position: Rack B12 (U-Space 14-15)"
+                android:textColor="#94A3B8"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp"
+            android:text="Performance Metrics History"
+            android:textColor="#F1F5F9"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChartResource"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:background="#172033"
+            android:padding="8dp" />
+
     </LinearLayout>
 
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>
