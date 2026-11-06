@@ -1,5 +1,8 @@
 package com.example.opsmonitor.ui
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -7,6 +10,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.navigation.fragment.findNavController
 import com.example.opsmonitor.databinding.FragmentServerDetailBinding
 import com.example.opsmonitor.model.Server
 import com.github.mikephil.charting.data.Entry
@@ -30,6 +36,10 @@ class ServerDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.btnBackDetail.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         val server = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             arguments?.getSerializable("EXTRA_SERVER", Server::class.java)
         } else {
@@ -51,6 +61,24 @@ class ServerDetailFragment : Fragment() {
                 else -> Color.rgb(248, 113, 113)
             }
             binding.tvDetailStatus.setTextColor(statusColor)
+
+            binding.btnCopyIp.setOnClickListener {
+                val clipboard = requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clip = ClipData.newPlainText("Server IP", s.ipAddress)
+                clipboard.setPrimaryClip(clip)
+                Toast.makeText(requireContext(), "IP Address ${s.ipAddress} disalin!", Toast.LENGTH_SHORT).show()
+            }
+
+            binding.btnReboot.setOnClickListener {
+                AlertDialog.Builder(requireContext())
+                    .setTitle("Reboot Server")
+                    .setMessage("Apakah Anda yakin ingin melakukan reboot pada server ${s.name}?")
+                    .setPositiveButton("Reboot") { _, _ ->
+                        Toast.makeText(requireContext(), "Perintah reboot dikirim ke ${s.name}", Toast.LENGTH_SHORT).show()
+                    }
+                    .setNegativeButton("Batal", null)
+                    .show()
+            }
 
             setupChart(s)
         }

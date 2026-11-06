@@ -49,6 +49,12 @@ class DashboardFragment : Fragment() {
             findNavController().navigate(R.id.action_dashboardFragment2_to_serverListFragment)
         }
 
+        binding.btnLogout.setOnClickListener {
+            val intent = android.content.Intent(requireContext(), LoginActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
+        }
+
         setupResourceChart()
     }
 

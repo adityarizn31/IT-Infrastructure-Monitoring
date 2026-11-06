@@ -26,7 +26,8 @@ class ServerListFragment : Fragment() {
         Server("DB-SERVER-01", "192.168.93.78", "Online", 40, 39, 65),
         Server("DB-SERVER-02", "192.168.93.78", "Warning", 90, 85, 88),
         Server("FILE-SERVER-01", "192.168.93.78", "Online", 51, 64, 70),
-        Server("API-SERVER-01", "192.168.93.78", "Online", 50, 48, 62)
+        Server("API-SERVER-01", "192.168.93.78", "Online", 50, 48, 62),
+        Server("DB-DRC-SERVER-01", "192.168.18.165", "Offline", 0, 0, 0)
     )
 
     override fun onCreateView(
@@ -57,20 +58,45 @@ class ServerListFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val query = s?.toString()?.trim() ?: ""
-                val filteredList = if (query.isEmpty()) {
-                    dummyServers
-                } else {
-                    dummyServers.filter {
-                        it.name.contains(query, ignoreCase = true) ||
-                                it.ipAddress.contains(query, ignoreCase = true)
-                    }
-                }
-                adapter.updateData(filteredList)
+                filterServers()
             }
 
             override fun afterTextChanged(s: Editable?) {}
         })
+
+        binding.cgFilterStatus.setOnCheckedStateChangeListener { _, _ ->
+            filterServers()
+        }
+    }
+
+    private fun filterServers() {
+        val query = binding.etSearchServer.text?.toString()?.trim() ?: ""
+        val selectedChipId = binding.cgFilterStatus.checkedChipId
+
+        val filteredList = dummyServers.filter { server ->
+            val matchesQuery = query.isEmpty() ||
+                    server.name.contains(query, ignoreCase = true) ||
+                    server.ipAddress.contains(query, ignoreCase = true)
+
+            val matchesStatus = when (selectedChipId) {
+                R.id.chipOnline -> server.status.equals("Online", ignoreCase = true)
+                R.id.chipWarning -> server.status.equals("Warning", ignoreCase = true)
+                R.id.chipOffline -> server.status.equals("Offline", ignoreCase = true)
+                else -> true
+            }
+
+            matchesQuery && matchesStatus
+        }
+
+        adapter.updateData(filteredList)
+
+        if (filteredList.isEmpty()) {
+            binding.tvEmptyState.visibility = View.VISIBLE
+            binding.rvServers.visibility = View.GONE
+        } else {
+            binding.tvEmptyState.visibility = View.GONE
+            binding.rvServers.visibility = View.VISIBLE
+        }
     }
 
     override fun onDestroyView() {

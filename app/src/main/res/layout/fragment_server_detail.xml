@@ -12,6 +12,17 @@
         android:orientation="vertical"
         android:padding="20dp">
 
+        <Button
+            android:id="@+id/btnBackDetail"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← Kembali"
+            android:textColor="#60A5FA"
+            android:paddingStart="0dp"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
         <!-- Judul / Nama Server Terpilih -->
         <TextView
             android:id="@+id/tvDetailServerName"
@@ -84,6 +95,56 @@
                 android:text="Disk Usage: 62%"
                 android:textColor="#FBBF24"
                 android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Server Quick Actions -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#172033"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Server Actions"
+                android:textColor="#F1F5F9"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnCopyIp"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    android:text="Salin IP"
+                    android:textColor="#60A5FA"
+                    android:textSize="13sp" />
+
+                <Button
+                    android:id="@+id/btnReboot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    android:backgroundTint="#F87171"
+                    android:text="Reboot"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
         <!-- Informasi Lokasi Fisik Data Center (Khas DCO) -->

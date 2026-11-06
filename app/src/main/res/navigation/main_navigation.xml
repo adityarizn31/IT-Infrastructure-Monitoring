@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
     app:startDestination="@id/dashboardFragment2">
+
     <fragment
         android:id="@+id/dashboardFragment2"
         android:name="com.example.opsmonitor.ui.DashboardFragment"
@@ -13,6 +14,7 @@
             android:id="@+id/action_dashboardFragment2_to_serverListFragment"
             app:destination="@id/serverListFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/serverListFragment"
         android:name="com.example.opsmonitor.ui.ServerListFragment"
@@ -22,9 +24,21 @@
             android:id="@+id/action_serverListFragment_to_serverDetailFragment"
             app:destination="@id/serverDetailFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/serverDetailFragment"
         android:name="com.example.opsmonitor.ui.ServerDetailFragment"
         android:label="fragment_server_detail"
         tools:layout="@layout/fragment_server_detail" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.opsmonitor.ui.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <activity
+        android:id="@+id/registerActivity"
+        android:name="com.example.opsmonitor.ui.RegisterActivity"
+        android:label="activity_register"
+        tools:layout="@layout/activity_register" />
+
 </navigation>
