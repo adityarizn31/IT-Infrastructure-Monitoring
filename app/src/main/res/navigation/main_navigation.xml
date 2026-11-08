@@ -13,6 +13,15 @@
         <action
             android:id="@+id/action_dashboardFragment2_to_serverListFragment"
             app:destination="@id/serverListFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment2_to_registerActivity"
+            app:destination="@id/registerActivity" />
+        <action
+            android:id="@+id/action_dashboardFragment2_to_loginActivity"
+            app:destination="@id/loginActivity" />
+        <action
+            android:id="@+id/action_dashboardFragment2_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment
@@ -30,6 +39,23 @@
         android:name="com.example.opsmonitor.ui.ServerDetailFragment"
         android:label="fragment_server_detail"
         tools:layout="@layout/fragment_server_detail" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.opsmonitor.ui.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.opsmonitor.ui.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
+
     <activity
         android:id="@+id/loginActivity"
         android:name="com.example.opsmonitor.ui.LoginActivity"

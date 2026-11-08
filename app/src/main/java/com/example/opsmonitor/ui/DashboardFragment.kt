@@ -6,13 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.opsmonitor.R
+import com.example.opsmonitor.adapter.AlertAdapter
 import com.example.opsmonitor.databinding.FragmentDashboardBinding
+import com.example.opsmonitor.model.Alert
 import com.example.opsmonitor.model.Server
+import com.example.opsmonitor.utils.NotificationHelper
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class DashboardFragment : Fragment() {
 
@@ -37,7 +44,7 @@ class DashboardFragment : Fragment() {
             Server("DB-SERVER-02", "192.168.93.78", "Warning", 90, 85, 88),
             Server("FILE-SERVER-01", "192.168.93.78", "Online", 51, 64, 70),
             Server("API-SERVER-01", "192.168.93.78", "Online", 50, 48, 62),
-            Server("DB-DRC-SERVER-01", "192,168.18.165", "Offline", 0, 0, 0)
+            Server("DB-DRC-SERVER-01", "192.168.18.165", "Offline", 0, 0, 0)
         )
 
         binding.tvTotalServers.text = dummyServers.size.toString()
@@ -55,7 +62,42 @@ class DashboardFragment : Fragment() {
             requireActivity().finish()
         }
 
+        binding.btnNotification.setOnClickListener {
+            showAlertCenterBottomSheet()
+        }
+
         setupResourceChart()
+    }
+
+    private fun showAlertCenterBottomSheet() {
+        val bottomSheet = BottomSheetDialog(requireContext())
+        val dialogView = layoutInflater.inflate(R.layout.dialog_alert_center, null)
+        bottomSheet.setContentView(dialogView)
+
+        val rvAlerts = dialogView.findViewById<RecyclerView>(R.id.rvAlerts)
+        val btnSimulate = dialogView.findViewById<Button>(R.id.btnSimulateNotification)
+
+        val dummyAlerts = listOf(
+            Alert("1", "Server Unreachable", "DB-DRC-SERVER-01 is unreachable (Status: Offline)", "5m ago", "CRITICAL"),
+            Alert("2", "High RAM Threshold", "APP-SERVER-02 RAM Usage hit 79% (Warning)", "12m ago", "WARNING"),
+            Alert("3", "High CPU Threshold", "DB-SERVER-02 CPU Usage hit 90% (Warning)", "25m ago", "WARNING"),
+            Alert("4", "Backup Completed", "FILE-SERVER-01 scheduled backup finished successfully", "1h ago", "INFO"),
+            Alert("5", "System Init", "OpsMonitor telemetries monitoring initialized", "2h ago", "INFO")
+        )
+
+        rvAlerts.layoutManager = LinearLayoutManager(requireContext())
+        rvAlerts.adapter = AlertAdapter(dummyAlerts)
+
+        btnSimulate.setOnClickListener {
+            NotificationHelper.showSystemNotification(
+                requireContext(),
+                "🚨 Alert Insiden Server",
+                "DB-DRC-SERVER-01 mengalami kegagalan koneksi jaringan!"
+            )
+            bottomSheet.dismiss()
+        }
+
+        bottomSheet.show()
     }
 
     private fun setupResourceChart() {

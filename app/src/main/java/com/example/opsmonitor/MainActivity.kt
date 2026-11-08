@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.serverDetailFragment) {
+            if (destination.id == R.id.serverDetailFragment || destination.id == R.id.editProfileFragment) {
                 binding.navView.visibility = View.GONE
             } else {
                 binding.navView.visibility = View.VISIBLE
